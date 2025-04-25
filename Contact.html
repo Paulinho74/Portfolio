@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact - Paulin</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header>
+    <div class="logo">
+      <a href="Accueil.html">
+        <img src="media/logo paulin 1.png" alt="Logo" />
+      </a>
+    </div>
+    <nav class="nav-links">
+      <a href="Accueil.html">Accueil</a>
+      <!-- <a href="A_Propos.html">À propos</a> -->
+      <a href="Accueil.html#portfolioSection">Réalisations</a>
+      <a href="Contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <!-- SECTION 1 : IMAGE DE FOND -->
+  <section class="contact">
+    <img src="media/portfolio page Contact.jpg" alt="Image de fond contact" />
+    <a href="#formulaire" class="scroll-indicator">↓</a>
+  </section>
+
+  <!-- SECTION 2 : FORMULAIRE -->
+  <section class="contact-form-section" id="formulaire">
+    <div class="contact-content">
+      <h1>Me contacter</h1>
+      <p>N'hésitez pas à me laisser un message pour toute question ou collaboration.</p>
+      <form class="contact-form">
+        <input type="text" name="nom" placeholder="Votre nom" required />
+        <input type="email" name="email" placeholder="Votre email" required />
+        <textarea name="message" placeholder="Votre message" required></textarea>
+        <button type="submit">Envoyer</button>
+      </form>
+    </div>
+  </section>
+
+  <div class="cursor" id="cursor"></div>
+  <script src="script.js"></script>
+
+</body>
+</html>

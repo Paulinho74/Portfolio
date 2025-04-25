@@ -1,0 +1,800 @@
+/* Réinitialisation globale des marges et des paddings */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* BODY */
+body {
+    padding: 0;
+    margin: 0;
+    font-family: sans-serif;
+    background-color: rgb(255, 255, 255);
+}
+
+html {
+    scroll-behavior: smooth;
+  }
+  
+/* HEADER */
+header {
+    display: flex;
+    align-items: center;
+    padding: 20px 40px;
+    position: fixed;
+    justify-content: space-between;
+    width: 100%;
+    background: transparent;
+    z-index: 10000;
+    opacity: 0; /* Masque le header au début */
+    transition: opacity 1s ease-in-out;
+    transform: translateY(0); /* Position de départ du header */
+}
+
+/* Le header devient visible après le chargement de l'image */
+header.visible {
+    opacity: 1!important;
+}
+
+/* Lorsque l'utilisateur fait défiler, le header disparaît lentement */
+header.hidden {
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out; /* Disparition plus lente */
+}
+
+/* LOGO */
+.logo img {
+    height: 8vw;
+}
+
+/* NAVIGATION */
+.nav-links {
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    opacity: 0.7;
+    font-size: 18px;
+    transition: opacity 0.3s;
+}
+
+.nav-links a:hover {
+    opacity: 1;
+}
+
+/* SECTION ACCUEIL */
+.accueil {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    margin: 0; /* Réinitialise la marge */
+    padding: 0; /* Réinitialise le padding */
+}
+
+/* Effet de flou et chargement progressif */
+.accueil img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: blur(10px); /* Image floutée au départ */
+    opacity: 0;
+    transition: filter 2s ease-in-out, opacity 2s ease-in-out;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+/* Classe ajoutée en JS pour l'effet de chargement */
+.accueil.loaded img {
+    filter: blur(0); /* Suppression du flou */
+    opacity: 1; /* Apparition progressive */
+}
+
+.overlay-bottom,
+.overlay-top {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.overlay-bottom {
+    top: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.6) 0%, transparent 40%);
+}
+
+.overlay-top {
+    top: 0;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6) 0%, transparent 40%);
+}
+/* SECTION INTRODUCTION */
+.introduction {
+    position: relative;
+    background-image: url('media/Sans titre-2.jpg');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: white;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+
+}
+
+.introduction .content {
+    z-index: 2;
+    position: relative;
+    padding: 0 20px;
+}
+
+/* Carousel fluide */
+/* Premier carrousel */
+.carousel {
+    display: flex;
+    overflow: hidden;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 40px 0;
+    position: relative;
+    mask-image: linear-gradient(to right, transparent 0%, black 20%, black 80%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 20%, black 80%, transparent 100%);
+}
+
+.carousel > * {
+    flex: 0 0 100%;
+}
+
+.group {
+    display: flex;
+    gap: 20px;
+    padding-right: 20px;
+    will-change: transform;
+    animation: scrolling 25s linear infinite; /* Premier carrousel - plus lent */
+}
+
+.carousel:hover .group {
+    animation-play-state: paused;
+}
+
+@keyframes scrolling {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+.carousel img {
+    height: 400px;
+    border-radius: 24px;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+/* Animation fade-in sur scroll */
+.fade-img {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+.fade-img.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Deuxième carrousel - à l'envers et plus rapide */
+.carousel.reverse {
+    max-width: 1000px;
+}
+.carousel.reverse .group {
+    animation: scrollingReverse 30s linear infinite; /* Deuxième carrousel - plus rapide et va à l'envers */
+}
+
+.carousel.reverse img {
+    height: 270px;
+    object-fit: cover; /* Conserve le ratio d'aspect et remplit l'espace */
+}
+
+@keyframes scrollingReverse {
+    0% {
+        transform: translateX(-100%); /* Commence en dehors de l'écran à gauche */
+    }
+    100% {
+        transform: translateX(0); /* Se déplace à la position normale */
+    }
+}
+
+
+
+.introduction h2 {
+    font-family: 'Helvetica Neue Black', sans-serif;
+                                                                                      
+    padding: 20px 0;
+    font-size: 3rem;
+}
+
+.introduction p {
+    font-family: 'Helvetica Neue ', sans-serif;
+                                                
+    font-size: 1rem !important;
+    line-height: 1.3; /* Hauteur de ligne pour espacer les lignes */
+    color: #EDE8FA; /* Couleur du texte */
+    margin: 0;
+    padding: 30px 0;
+    letter-spacing: 0.5px; /* Espacement des lettres */
+    max-width: 80%; /* Limite la largeur du texte pour qu'il ne prenne pas toute la largeur */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Pour rendre le texte plus large sur les écrans plus grands */
+@media (min-width: 768px) {
+    .introduction p {
+        font-size: 2rem; /* Agrandir le texte sur les écrans plus grands */
+    }
+}
+
+
+
+
+.lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    backdrop-filter: blur(5px);
+    transition: opacity 0.3s ease;
+}
+
+.lightbox.hidden {
+    display: none;
+}
+
+.lightbox-img {
+    max-width: 90vw;
+    max-height: 90vh;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+}
+
+/* Bouton de fermeture */
+.close-btn-img {
+    position: absolute;
+    top: 20px;
+    right: 40px;
+    width: 50px; /* adapte à la taille de ton icône */
+    height: auto;
+    cursor: pointer;
+    z-index: 1001;
+    filter: brightness(0) invert(1);
+}
+
+
+
+
+.linkedin-logo {
+    padding-top: 1vw;
+    width: 5vw;
+    transition: transform 0.2s ease;
+}
+
+a:hover .linkedin-logo {
+    transform: scale(1.1);
+}
+
+
+/* SECTION PORTFOLIO */
+.portfolio {
+    padding: 60px 20px;
+    background: url('media/portfolio page 3.jpg') no-repeat center center;
+    background-size: cover;
+  }
+  
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 🔥 Deux colonnes fixes */
+    gap: 30px;
+    max-width: 1300px;
+    margin: 0 auto;
+  }
+  
+  .card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 15px;
+    height: 400px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+  }
+  
+  .card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+  }
+  
+  .card .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    color: white;
+    background: rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 20px;
+    transition: background 0.3s ease;
+  }
+  
+  .card h3 {
+    font-size: 1.5rem;
+    margin: 0 0 10px;
+    z-index: 2;
+  }
+  
+  .card p,
+  .card a {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .card a.btn {
+    display: inline-block;
+    margin-top: 10px;
+    background: white;
+    color: black;
+    padding: 8px 16px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.9rem;
+  }
+  
+  .card:hover img {
+    transform: scale(1.05);
+  }
+  
+  .card:hover .overlay {
+    background: rgba(0, 0, 0, 0.7);
+  }
+  
+  .card:hover p,
+  .card:hover a {
+    opacity: 1;
+  }
+  
+
+  @media screen and (max-width: 768px) {
+    .cards {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  .scroll-to-top {
+    position: relative;
+    bottom: 2rem;
+    left: 47%;
+    transform: translateX(-50%);
+    font-size: 2.5rem;
+    color: white;
+    text-decoration: none;
+    animation: bounce 2s infinite;
+    z-index: 10;
+  }
+  
+  @keyframes bounce {
+    0%, 100% {
+      transform: translate(-50%, 0);
+    }
+    50% {
+      transform: translate(-50%, 10px);
+    }
+  }
+  
+  
+
+
+
+
+/* CURSEUR PERSONNALISÉ */
+.cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 17px;
+    height: 17px;
+    background-color: rgb(68, 0, 255);
+    border-radius: 50%;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    z-index: 10000;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.cursor.visible {
+    opacity: 1;
+}
+
+
+
+
+
+
+/* PAGE CONTACT */
+
+/* SECTION 1 : Image plein écran */
+.contact {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    margin: 0; /* Réinitialise la marge */
+    padding: 0; /* Réinitialise le padding */
+  }
+  .contact.loaded img {
+    filter: blur(0); /* Suppression du flou */
+    opacity: 1; /* Apparition progressive */
+}
+  .contact img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: blur(10px); /* Image floutée au départ */
+    opacity: 0;
+    transition: filter 2s ease-in-out, opacity 2s ease-in-out;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  
+  .scroll-indicator {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2.5rem;
+    color: white;
+    text-decoration: none;
+    animation: bounce 2s infinite;
+    z-index: 10;
+  }
+  
+  @keyframes bounce {
+    0%, 100% { transform: translate(-50%, 0); }
+    50% { transform: translate(-50%, 10px); }
+  }
+  
+  /* SECTION 2 : Formulaire */
+  .contact-form-section {
+    background-image:url('media/portfolio page 4.jpg') ;
+    backdrop-filter: blur(8px);
+    padding: 10vh 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color: #000000;
+    text-align: center;
+  }
+  
+  .contact-content {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 16px;
+    padding: 3rem 2rem;
+    max-width: 600px;
+    width: 100%;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  }
+  
+  .contact-content h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #E9F0F7;
+  }
+  
+  .contact-content p {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+    color: #E9F0F7;
+  }
+  
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .contact-form input,
+  .contact-form textarea {
+    background-color: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: 8px;
+    padding: 0.9rem 1rem;
+    color: #E9F0F7;
+    font-size: 1rem;
+    outline: none;
+    transition: background-color 0.3s ease;
+  }
+  
+  .contact-form input::placeholder,
+  .contact-form textarea::placeholder {
+    color: #e9f0f796;
+  }
+  
+  .contact-form input:focus,
+  .contact-form textarea:focus {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+  
+  .contact-form button {
+    background-color: #000FFF;
+    color: #E9F0F7;
+    border: none;
+    padding: 0.9rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .contact-form button:hover {
+    background-color: #E9F0F7;
+    color: #000FFF;
+    transform: translateY(-2px);
+  }
+  
+
+
+
+
+  /* PAGE AFFICHES FOOTBALL */
+
+ /* Section avec image de fond et texte */
+.afficheFootball {
+    position: relative;
+    width: 100%;
+    height: 80vh; /* 4/5 de la hauteur */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+/* Image en fond (floutée au départ) */
+.afficheFootball img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* L'image couvre toute la section sans déformation */
+    filter: blur(10px); /* L'image est floutée au départ */
+    opacity: 0;
+    transition: filter 2s ease-in-out, opacity 2s ease-in-out;
+    z-index: 0; /* Derrière les autres éléments */
+}
+
+/* Effet de suppression du flou et apparition progressive de l'image */
+.afficheFootball.loaded img {
+    filter: blur(0); /* Supprime le flou */
+    opacity: 1; /* L'image devient nette */
+}
+
+/* Overlay pour l'effet de superposition */
+.afficheFootball .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* L'overlay noir */
+    z-index: 1; /* Assure que l'overlay soit au-dessus de l'image */
+}
+
+
+/* Texte par-dessus l'image */
+.afficheFootball .content {
+    position: absolute; /* Change de "relative" à "absolute" pour un meilleur contrôle */
+    bottom: 20px; /* Place le texte à 20px du bas */
+    left: 20px;   /* Place le texte à 20px du côté gauche */
+    z-index: 2;   /* Pour que le texte soit au-dessus de l'overlay */
+    color: #fff;
+    font-size: 3rem;
+    font-family: 'Bebas Neue', sans-serif;
+    line-height: 1.2; /* Réduit l'espacement entre les lignes */
+}
+
+
+.afficheFootball .content p {
+font-size: 2rem;}
+
+/* STYLES POUR LES AFFICHES */
+.portfolio {
+    padding: 40px 0;
+    text-align: center;
+    background-color: #f9f9f9;
+}
+
+.portfolio h2 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+}
+
+.affiches-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.affiche-card {
+    width: 300px;
+    height: 400px;
+    background-color: #ddd;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.affiche-card .info {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    color: white;
+    font-size: 1rem;
+    font-family: 'Helvetica Neue', sans-serif;
+}
+
+
+
+/* 
+PAGE PHOTOGRAPHIE */
+
+
+.photographies {
+    padding: 50px 0;
+    background-image: url('media/portfolio page 2.jpg');
+    position: relative;
+   
+}
+
+.photo-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.photo-card {
+    width: calc(33.333% - 20px); /* 3 colonnes, en prenant en compte le gap */
+    aspect-ratio: 16 / 9;
+    background-size: cover;
+    background-position: center;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+
+.photo-card:hover {
+    transform: scale(1.03);
+}
+
+
+@media (max-width: 1024px) {
+    .photo-card {
+        width: calc(50% - 20px);
+    }
+}
+
+@media (max-width: 600px) {
+    .photo-card {
+        width: 100%;
+    }
+}
+
+
+
+footer {
+    background-color: #111; /* couleur sombre */
+    color: #fff;
+    padding: 40px 20px;
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+}
+
+footer .nav-links {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-bottom: 10px;
+}
+
+footer .nav-links a {
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    opacity: 0.7;
+    font-size: 18px;
+    transition: opacity 0.3s;
+    transition: color 0.3s, background-color 0.3s;
+   
+}
+
+footer .nav-links a:hover {
+    opacity: 1;
+}
+
+/* PAGE VIDEO */
+
+
+.videos {
+    padding: 60px 20px;
+    background-image: url('media/portfolio page 2.jpg');
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+    color: #fff;
+    font-family: 'Arial', sans-serif;
+}
+
+.video-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+    padding: 40px 20px;
+}
+
+.video-frame {
+    position: relative;
+    width: 100%;
+    max-width: 960px; /* plus large qu’avant */
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+
+.video-frame iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+}
+
+
+
+

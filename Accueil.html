@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paulin</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/helvetica-neue-55" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+           
+
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <a href="Accueil.html">
+                <img src="media/logo paulin 1.png" alt="Logo">
+            </a>
+        </div>
+        <nav class="nav-links">
+            <a href="Accueil.html">Accueil</a>
+            <!-- <a href="A_Propos.html">À propos</a> -->
+            <a href="Accueil.html#portfolioSection">Réalisations</a>
+            <a href="Contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <section class="accueil" id="accueilSection">
+        <img src="media/portfolio page 1.1.jpg" alt="accueil Image">
+        <div class="overlay-bottom"></div> <!-- Superposition pour l'effet de dégradé -->
+    </section>
+
+    <section class="introduction">
+        <div class="overlay-top"></div>
+      
+        <div class="content">
+          <h2>Salut, moi c’est Paulin</h2>
+          <p class="fade-img">
+            Étudiant en BUT MMI à Dijon, je suis passionné par l’audiovisuel, le graphisme et la création de contenu visuel. J’ai notamment eu l’opportunité d’effectuer un stage au Dijon Football Club Côte-d'Or<br><br> Découvrez mon portfolio !
+          </p>
+      
+          <div class="carousel">
+            <div class="group">
+              <img src="media/affiches foot/Madueke.jpg" alt="Madueke" class="fade-img" />
+              <img src="media/affiches foot/Zirkzee.jpg" alt="Zirkzee" class="fade-img" />
+              <img src="media/affiches foot/Laline Yamal (1).jpg" alt="Lamine Yamal" class="fade-img" />
+              <img src="media/affiches foot/xavi simons.jpg" alt="Xavi Simons" class="fade-img" />
+            </div>
+            <div class="group" aria-hidden="true">
+              <img src="media/affiches foot/Madueke.jpg" alt="" class="fade-img" />
+              <img src="media/affiches foot/Zirkzee.jpg" alt="" class="fade-img" />
+              <img src="media/affiches foot/Laline Yamal (1).jpg" alt="" class="fade-img" />
+              <img src="media/affiches foot/xavi simons.jpg" alt="Xavi Simons" class="fade-img" />
+            </div>
+          </div>
+
+          <!-- Deuxième Carrousel (inverse et plus rapide) -->
+<div class="carousel reverse">
+    <div class="group">
+      <img src="media/Photos/DSC07214.jpg"  class="fade-img" />
+      <img src="media/Photos/DSC07359.jpg"  class="fade-img" />
+      <img src="media/Photos/DSC07433.jpg"  class="fade-img" />
+      <img src="media/Photos/DSC07452-2.jpg"  class="fade-img" />
+    </div>
+    <div class="group" aria-hidden="true">
+        <img src="media/Photos/DSC07214.jpg"  class="fade-img" />
+        <img src="media/Photos/DSC07359.jpg"  class="fade-img" />
+        <img src="media/Photos/DSC07433.jpg"  class="fade-img" />
+        <img src="media/Photos/DSC07452-2.jpg"  class="fade-img" />
+    </div>
+  </div>
+      
+          <a href="https://www.linkedin.com/in/paulin-varrel-09909b301/" target="_blank" rel="noopener noreferrer">
+            <img src="media/linkedin.webp" alt="logo linkedin" class="linkedin-logo">
+          </a>
+        </div>
+      </section>
+      
+    
+      <section class="portfolio" id="portfolioSection">
+        <div class="cards">
+      
+          <div class="card">
+            <img src="media/affiches foot/xavi simons.jpg" alt="Affiches Football">
+            <div class="overlay">
+              <h3>Affiches Football</h3>
+              <p>Créations autour du football avec une direction artistique forte et typographie marquée.</p>
+              <a href="Affiches_football.html" class="btn">Voir projet</a>
+            </div>
+          </div>
+      
+          <div class="card">
+            <img src="media/Photos/DSC07452-2.jpg" alt="Photographies">
+            <div class="overlay">
+              <h3>Photographies</h3>
+              <p>Sélection de phtos de joueurs ou d'espace.</p>
+              <a href="Photographies.html" class="btn">Voir projet</a>
+            </div>
+          </div>
+      
+          <div class="card">
+            <img src="ORLEANS_10.jpg" alt="Montage Vidéo">
+            <div class="overlay">
+              <h3>Créations audiovisuelles</h3>
+              <p>Montages et production vidéos.</p>
+              <a href="Vidéos.html" class="btn">Voir projet</a>
+            </div>
+          </div>
+      
+          <div class="card">
+            <img src="media/autres/MMI-1-2324-PAULIN-VARREL-AFFICHE-FANTA-JPEG.jpg" alt="Autres créations">
+            <div class="overlay">
+              <h3>Autres Créations</h3>
+              <p>Affiches, visuels, logo.</p>
+              <a href="Autres_Creations.html" class="btn">Voir projet</a>
+            </div>
+          </div>
+      
+        </div>
+
+        <a href="#accueilSection" class="scroll-to-top">↑</a>
+      </section>
+      
+
+
+<!-- Lightbox -->
+
+
+<div class="lightbox hidden" id="lightbox">
+    <img src="media/Shape Element-05.png" alt="Fermer" class="close-btn-img" />
+    <img class="lightbox-img" />
+  </div>
+  
+
+
+
+    <div class="cursor" id="cursor"></div>
+
+    <script src="script.js"></script>
+    
+
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script>
+      AOS.init({
+        duration: 800,
+        easing: 'ease-out-cubic',
+        once: true
+      });
+    </script>
+    
+
+
+    <style>
+        @import url('https://fonts.cdnfonts.com/css/helvetica-neue-55');
+</style>
+
+</body>
+</html>
